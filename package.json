@@ -50,14 +50,14 @@
 				"extensions": [
 					".c"
 				],
-				"aliases": ["c language", "C Language"]
+				"aliases": [ "C Language", "c language" ]
 			},
 			{
 				"id": "h",
 				"extensions": [
 					".h"
 				],
-				"aliases": ["c header", "C Header"]
+				"aliases": ["C Header", "c header"]
 			}
 		]
 	},

@@ -167,7 +167,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<Diagnos
 
 	// The validator creates diagnostics for all uppercase words length 2 and more
 	const text = textDocument.getText();
-	const pattern = /\b[A-Z]{2,}\b/g;
+	const pattern = /[あいうえお]{2,}/g;
 	let m: RegExpExecArray | null;
 
 	// URI文字列からPathを取得 
