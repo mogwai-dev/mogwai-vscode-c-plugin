@@ -43,7 +43,23 @@
 					"description": "Traces the communication between VS Code and the language server."
 				}
 			}
-		}
+		},
+		"languages": [
+			{
+				"id": "c",
+				"extensions": [
+					".c"
+				],
+				"aliases": ["c language", "C Language"]
+			},
+			{
+				"id": "h",
+				"extensions": [
+					".h"
+				],
+				"aliases": ["c header", "C Header"]
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

@@ -19,6 +19,8 @@ import {
 	type DocumentDiagnosticReport
 } from 'vscode-languageserver/node';
 
+import * as path from 'path';
+
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
@@ -168,6 +170,12 @@ async function validateTextDocument(textDocument: TextDocument): Promise<Diagnos
 	const pattern = /\b[A-Z]{2,}\b/g;
 	let m: RegExpExecArray | null;
 
+	// URI文字列からPathを取得 
+	const uri = textDocument.uri;
+	const parsedPath = new URL(uri).pathname;
+	 // 拡張子を取得 
+	const ext = path.extname(parsedPath);
+	
 	let problems = 0;
 	const diagnostics: Diagnostic[] = [];
 	while ((m = pattern.exec(text)) && problems < settings.maxNumberOfProblems) {
@@ -178,7 +186,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<Diagnos
 				start: textDocument.positionAt(m.index),
 				end: textDocument.positionAt(m.index + m[0].length)
 			},
-			message: `${m[0]} is all uppercase.`,
+			message: `${m[0]} is all uppercase. 拡張子は ${ext}`,
 			source: 'ex'
 		};
 		if (hasDiagnosticRelatedInformationCapability) {
